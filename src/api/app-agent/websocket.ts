@@ -96,6 +96,12 @@ export class AppAgentWebsocket implements AppAgentClient {
     installed_app_id: InstalledAppId,
     defaultTimeout?: number
   ) {
+    const env = getLauncherEnvironment();
+
+    if (env?.APP_INTERFACE_PORT) {
+      url = new URL(`ws://127.0.0.1:${env.APP_INTERFACE_PORT}`);
+    }
+
     const appWebsocket = await AppWebsocket.connect(url, defaultTimeout);
     const appInfo = await appWebsocket.appInfo({
       installed_app_id: installed_app_id,
