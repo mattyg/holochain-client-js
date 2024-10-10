@@ -136,6 +136,7 @@ export type AppInfo = {
   installed_app_id: InstalledAppId;
   cell_info: Record<RoleName, Array<CellInfo>>;
   status: InstalledAppInfoStatus;
+  installed_at: Timestamp;
 };
 
 /**
